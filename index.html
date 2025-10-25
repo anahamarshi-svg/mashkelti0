@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مشكلتي</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@600;700&family=Orbitron:wght@600&display=swap');
+
+    body {
+      margin: 0;
+      font-family: "Cairo", sans-serif;
+      background: radial-gradient(circle at top, #050d1a, #0e1a2b, #000);
+      color: #fff;
+      text-align: center;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 4em;
+      color: #00eaff;
+      letter-spacing: 3px;
+      text-shadow: 0 0 20px #00eaff, 0 0 40px #0072ff, 0 0 60px #00eaff;
+      animation: glow 3s infinite alternate ease-in-out;
+      margin-bottom: 10px;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #00eaff, 0 0 20px #0072ff; }
+      to { text-shadow: 0 0 25px #00eaff, 0 0 50px #0072ff, 0 0 70px #00eaff; }
+    }
+
+    p {
+      font-size: 1.3em;
+      margin-bottom: 20px;
+      color: #cceeff;
+    }
+
+    form {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 30px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 420px;
+      box-shadow: 0 0 25px #00eaff;
+      backdrop-filter: blur(10px);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1.1em;
+      color: #cceeff;
+    }
+
+    select {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      outline: none;
+      font-family: inherit;
+      font-size: 1em;
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      margin-bottom: 20px;
+      transition: 0.3s;
+    }
+
+    select:focus {
+      box-shadow: 0 0 15px #00eaff;
+    }
+
+    option {
+      background: #0e1a2b;
+      color: white;
+    }
+
+    button {
+      width: 100%;
+      background: linear-gradient(90deg, #00eaff, #0072ff);
+      border: none;
+      padding: 12px;
+      border-radius: 25px;
+      color: #fff;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 20px #00eaff;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px #00eaff;
+    }
+
+    .glow {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, #00eaff22, transparent 60%);
+      animation: move 12s infinite alternate ease-in-out;
+    }
+
+    @keyframes move {
+      0% { top: 10%; left: 10%; }
+      100% { top: 60%; left: 70%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="glow"></div>
+
+  <h1>مشكلتي</h1>
+  <p>مرحباً بك! اختر صفك وشعبتك ثم انتقل لتسجيل مشكلتك.</p>
+
+  <form id="studentForm">
+    <label for="grade">الصف:</label>
+    <select id="grade" name="grade" required>
+      <option value="">اختر الصف</option>
+      <option value="الثامن">الصف الثامن</option>
+      <option value="التاسع">الصف التاسع</option>
+      <option value="العاشر">الصف العاشر</option>
+    </select>
+
+    <label for="section">الشعبة:</label>
+    <select id="section" name="section" required>
+      <option value="">اختر الشعبة</option>
+      <option value="أ">أ</option>
+      <option value="ب">ب</option>
+      <option value="ج">ج</option>
+      <option value="د">د</option>
+      <option value="ح">ح</option>
+      <option value="و">و</option>
+    </select>
+
+    <button type="submit">ابدأ الآن 🚀</button>
+  </form>
+
+  <script>
+    // On submit: go to form.html and pass both grade + section
+    document.getElementById('studentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const grade = document.getElementById('grade').value;
+      const section = document.getElementById('section').value;
+      if (grade && section) {
+        window.location.href = `form.html?grade=${encodeURIComponent(grade)}&section=${encodeURIComponent(section)}`;
+      }
+    });
+  </script>
+</body>
+</html>
